@@ -1,0 +1,33 @@
+﻿<Window x:Class="PotatoCAD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CAD System" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10">
+            <Button Name="DrawLineButton" Content="Draw Line" Margin="5" Click="DrawLineButton_Click"/>
+            <Button Name="ExtrudeButton" Content="Extrude to 3D" Margin="5" Click="ExtrudeButton_Click"/>
+        </StackPanel>
+
+        <Viewport3D Name="MyViewport3D" Grid.Column="1" ClipToBounds="True" >
+            <!-- Define a camera to view the 3D object -->
+            <Viewport3D.Camera>
+                <PerspectiveCamera Position="3,3,3" LookDirection="-3,-3,-3" UpDirection="0,1,0" FieldOfView="45" />
+            </Viewport3D.Camera>
+
+            <!-- Add lights to illuminate the 3D objects -->
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <DirectionalLight Color="White" Direction="-1,-1,-1" />
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+
+            <!-- Placeholder for 3D objects -->
+            <ModelVisual3D x:Name="ModelContainer"/>
+        </Viewport3D>
+    </Grid>
+</Window>
